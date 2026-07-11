@@ -60,3 +60,11 @@
 //         userId: userId,
 //     });
 // });
+
+# The purpose of this repo is:
+-Documentation
+-Research
+-Architecture
+-Roadmap
+-Database design
+-Notes
