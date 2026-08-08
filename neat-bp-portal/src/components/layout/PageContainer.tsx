@@ -1,7 +1,9 @@
+import { Outlet } from "react-router-dom";
+
 export default function PageContainer() {
   return (
-    <main className="flex-1 bg-zinc-950 p-6">
-      Welcome to Neat Billing Protocol 🚀
+    <main className="flex-1 overflow-y-auto p-6">
+      <Outlet />
     </main>
   );
 }
