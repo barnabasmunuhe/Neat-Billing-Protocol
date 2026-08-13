@@ -33,13 +33,9 @@ export default function Sidebar() {
     <aside className="w-64 shrink-0 border-r border-zinc-800 bg-zinc-950 p-4">
       {/* Brand */}
       <div className="mb-8 px-3 py-2">
-        <h1 className="text-lg font-bold text-white">
-          Neat Billing Protocol
-        </h1>
+        <h1 className="text-lg font-bold text-white">Neat Billing Protocol</h1>
 
-        <p className="mt-1 text-xs text-zinc-500">
-          ISP Operations Platform
-        </p>
+        <p className="mt-1 text-xs text-zinc-500">ISP Operations Platform</p>
       </div>
 
       {/* Navigation */}

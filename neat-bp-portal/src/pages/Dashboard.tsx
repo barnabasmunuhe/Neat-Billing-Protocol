@@ -1,11 +1,8 @@
-import {
-  FiUsers,
-  FiZap,
-  FiDollarSign,
-  FiWifi,
-} from "react-icons/fi";
+import { FiUsers, FiZap, FiDollarSign, FiWifi } from "react-icons/fi";
 
 import StatsCard from "../components/dashboard/StatsCard";
+import RevenueChart from "../components/dashboard/RevenueChart";
+import NetworkHealth from "../components/dashboard/NetworkHealth";
 
 export default function Dashboard() {
   return (
@@ -16,12 +13,10 @@ export default function Dashboard() {
           Good Morning Barney ☀️
         </h1>
 
-        <p className="mt-1 text-sm text-zinc-500">
-          Your network is healthy.
-        </p>
+        <p className="mt-1 text-sm text-zinc-500">Your network is healthy.</p>
       </div>
 
-      {/* Stats */}
+      {/* Stats Grid */}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatsCard
           title="Customers"
@@ -50,6 +45,14 @@ export default function Dashboard() {
           description="All systems operational"
           icon={<FiWifi size={20} />}
         />
+      </div>
+
+      <div className="grid gap-6 xl:grid-cols-3">
+        <div className="xl:col-span-2">
+          <RevenueChart />
+        </div>
+
+        <NetworkHealth />
       </div>
     </div>
   );
