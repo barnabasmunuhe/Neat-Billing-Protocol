@@ -10,9 +10,7 @@ interface TopbarProps {
   onToggleSidebar: () => void;
 }
 
-export default function Topbar({
-  onToggleSidebar,
-}: TopbarProps) {
+export default function Topbar({ onToggleSidebar }: TopbarProps) {
   return (
     <header className="flex h-20 shrink-0 items-center justify-between border-b border-white/10 bg-[#07070A] px-6">
       {/* =========================================================
@@ -39,10 +37,7 @@ export default function Topbar({
             SEARCH
         ------------------------------------------------------- */}
         <div className="flex h-10 w-[250px] items-center rounded-xl border border-white/10 bg-[#0B0D14]">
-          <FiSearch
-            size={18}
-            className="ml-4 shrink-0 text-zinc-500"
-          />
+          <FiSearch size={18} className="ml-4 shrink-0 text-zinc-500" />
 
           <input
             type="text"
@@ -103,10 +98,7 @@ export default function Topbar({
             </p>
           </div>
 
-          <FiChevronDown
-            size={16}
-            className="text-zinc-400"
-          />
+          <FiChevronDown size={16} className="text-zinc-400" />
         </button>
       </div>
     </header>

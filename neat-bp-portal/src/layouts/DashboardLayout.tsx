@@ -17,10 +17,7 @@ export default function DashboardLayout() {
       {/* =========================================================
           SIDEBAR
       ========================================================= */}
-      <Sidebar
-        collapsed={sidebarCollapsed}
-        onToggle={toggleSidebar}
-      />
+      <Sidebar collapsed={sidebarCollapsed} onToggle={toggleSidebar} />
 
       {/* =========================================================
           MAIN APPLICATION AREA
