@@ -97,10 +97,7 @@ const menu = [
   },
 ];
 
-export default function Sidebar({
-  collapsed,
-  onToggle,
-}: SidebarProps) {
+export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
   const location = useLocation();
 
   return (
@@ -119,9 +116,7 @@ export default function Sidebar({
       <div
         className={[
           "shrink-0",
-          collapsed
-            ? "px-3 pb-6 pt-5"
-            : "px-4 pb-6 pt-5",
+          collapsed ? "px-3 pb-6 pt-5" : "px-4 pb-6 pt-5",
         ].join(" ")}
       >
         <div
@@ -190,9 +185,7 @@ export default function Sidebar({
                     "text-sm font-medium",
                     "transition-all duration-150",
 
-                    collapsed
-                      ? "justify-center px-2"
-                      : "gap-3 px-3",
+                    collapsed ? "justify-center px-2" : "gap-3 px-3",
 
                     isActive
                       ? [
@@ -210,17 +203,9 @@ export default function Sidebar({
                   ].join(" ")
                 }
               >
-                <Icon
-                  size={18}
-                  strokeWidth={1.8}
-                  className="shrink-0"
-                />
+                <Icon size={18} strokeWidth={1.8} className="shrink-0" />
 
-                {!collapsed && (
-                  <span className="truncate">
-                    {item.name}
-                  </span>
-                )}
+                {!collapsed && <span className="truncate">{item.name}</span>}
               </NavLink>
             );
           })}
@@ -235,18 +220,11 @@ export default function Sidebar({
         <div className="mx-4 border-t border-white/10" />
 
         {/* USER PROFILE */}
-        <div
-          className={[
-            "py-4",
-            collapsed ? "px-3" : "px-5",
-          ].join(" ")}
-        >
+        <div className={["py-4", collapsed ? "px-3" : "px-5"].join(" ")}>
           <div
             className={[
               "flex items-center",
-              collapsed
-                ? "justify-center"
-                : "gap-3",
+              collapsed ? "justify-center" : "gap-3",
             ].join(" ")}
           >
             {/* AVATAR */}
@@ -280,17 +258,13 @@ export default function Sidebar({
         {/* SYSTEM TIME */}
         {!collapsed && (
           <div className="border-t border-white/10 px-5 pb-6 pt-4">
-            <p className="text-[11px] font-medium text-zinc-500">
-              System Time
-            </p>
+            <p className="text-[11px] font-medium text-zinc-500">System Time</p>
 
             <p className="mt-1 text-sm font-medium tracking-wide text-purple-400">
               10:24:35 AM
             </p>
 
-            <p className="mt-1 text-xs text-zinc-500">
-              August 08, 2026
-            </p>
+            <p className="mt-1 text-xs text-zinc-500">August 08, 2026</p>
           </div>
         )}
       </div>

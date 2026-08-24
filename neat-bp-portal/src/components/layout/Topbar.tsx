@@ -10,17 +10,13 @@ interface TopbarProps {
   onToggleSidebar: () => void;
 }
 
-export default function Topbar({
-  onToggleSidebar,
-}: TopbarProps) {
+export default function Topbar({ onToggleSidebar }: TopbarProps) {
   return (
     <header className="flex h-20 shrink-0 items-center justify-between border-b border-white/10 bg-[#07070A] px-6">
-
       {/* =========================================================
           LEFT SIDE
       ========================================================= */}
       <div className="flex items-center">
-
         {/* SIDEBAR TOGGLE */}
         <button
           type="button"
@@ -38,21 +34,15 @@ export default function Topbar({
         >
           <FiMenu size={20} />
         </button>
-
       </div>
 
       {/* =========================================================
           RIGHT SIDE
       ========================================================= */}
       <div className="flex items-center gap-5">
-
         {/* SEARCH */}
         <div className="flex h-10 w-56 items-center rounded-xl border border-white/10 bg-[#0B0D14]">
-
-          <FiSearch
-            size={18}
-            className="ml-4 shrink-0 text-zinc-500"
-          />
+          <FiSearch size={18} className="ml-4 shrink-0 text-zinc-500" />
 
           <input
             type="text"
@@ -66,7 +56,6 @@ export default function Topbar({
               "placeholder:text-zinc-500",
             ].join(" ")}
           />
-
         </div>
 
         {/* NOTIFICATIONS */}
@@ -122,21 +111,13 @@ export default function Topbar({
           </div>
 
           <div className="hidden text-left md:block">
-            <p className="text-sm font-semibold text-white">
-              Barney
-            </p>
+            <p className="text-sm font-semibold text-white">Barney</p>
 
-            <p className="text-xs text-zinc-500">
-              Administrator
-            </p>
+            <p className="text-xs text-zinc-500">Administrator</p>
           </div>
 
-          <FiChevronDown
-            size={16}
-            className="text-zinc-400"
-          />
+          <FiChevronDown size={16} className="text-zinc-400" />
         </button>
-
       </div>
     </header>
   );

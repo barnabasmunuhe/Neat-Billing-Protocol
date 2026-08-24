@@ -16,16 +16,12 @@ export default function DashboardLayout() {
       {/* =========================================================
           SIDEBAR
       ========================================================= */}
-      <Sidebar
-        collapsed={sidebarCollapsed}
-        onToggle={toggleSidebar}
-      />
+      <Sidebar collapsed={sidebarCollapsed} onToggle={toggleSidebar} />
 
       {/* =========================================================
           MAIN APPLICATION AREA
       ========================================================= */}
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-
         {/* ---------------------------------------------------------
             TOPBAR
         --------------------------------------------------------- */}
@@ -39,7 +35,6 @@ export default function DashboardLayout() {
         <main className="min-h-0 flex-1 overflow-hidden">
           <PageContainer />
         </main>
-
       </div>
     </div>
   );
