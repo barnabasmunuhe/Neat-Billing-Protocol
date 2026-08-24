@@ -97,7 +97,10 @@ const menu = [
   },
 ];
 
-export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
+export default function Sidebar({
+  collapsed,
+  onToggle: _onToggle,
+}: SidebarProps) {
   return (
     <aside
       className={[
@@ -114,7 +117,9 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
       <div
         className={[
           "shrink-0",
-          collapsed ? "px-3 pb-6 pt-5" : "px-4 pb-6 pt-5",
+          collapsed
+            ? "px-3 pb-6 pt-5"
+            : "px-4 pb-6 pt-5",
         ].join(" ")}
       >
         <div
@@ -124,22 +129,28 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
           ].join(" ")}
         >
           {/* -----------------------------------------------------
-              N MARK
+              NEAT LOGO
+              
+              The PNG is now:
+              - transparent
+              - tightly cropped
+              - clean
+              - glow preserved
+              - optimized for small display
+              
+              Therefore we render it at its actual display size.
           ----------------------------------------------------- */}
           <div
             className={[
               "flex shrink-0 items-center justify-center",
-              "overflow-hidden",
-              collapsed ? "h-[46px] w-[46px]" : "h-[42px] w-[42px]",
+              collapsed ? "h-[44px] w-[44px]" : "h-[44px] w-[44px]",
             ].join(" ")}
           >
             <img
               src={neatLogo}
               alt="Neat"
-              className={[
-                "max-w-none object-cover",
-                collapsed ? "h-[62px] w-[62px]" : "h-[58px] w-[58px]",
-              ].join(" ")}
+              draggable={false}
+              className="block h-[44px] w-[44px] object-contain"
             />
           </div>
 
@@ -180,7 +191,9 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
                     "text-sm font-medium",
                     "transition-all duration-150",
 
-                    collapsed ? "justify-center px-2" : "gap-3 px-3",
+                    collapsed
+                      ? "justify-center px-2"
+                      : "gap-3 px-3",
 
                     isActive
                       ? [
@@ -198,9 +211,17 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
                   ].join(" ")
                 }
               >
-                <Icon size={18} strokeWidth={1.8} className="shrink-0" />
+                <Icon
+                  size={18}
+                  strokeWidth={1.8}
+                  className="shrink-0"
+                />
 
-                {!collapsed && <span className="truncate">{item.name}</span>}
+                {!collapsed && (
+                  <span className="truncate">
+                    {item.name}
+                  </span>
+                )}
               </NavLink>
             );
           })}
@@ -211,6 +232,7 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
           BOTTOM AREA
       ========================================================= */}
       <div className="shrink-0">
+
         {/* ---------------------------------------------------------
             USER PROFILE DIVIDER
         --------------------------------------------------------- */}
@@ -219,11 +241,18 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
         {/* ---------------------------------------------------------
             USER PROFILE
         --------------------------------------------------------- */}
-        <div className={["py-4", collapsed ? "px-3" : "px-5"].join(" ")}>
+        <div
+          className={[
+            "py-4",
+            collapsed ? "px-3" : "px-5",
+          ].join(" ")}
+        >
           <div
             className={[
               "flex items-center",
-              collapsed ? "justify-center" : "gap-3",
+              collapsed
+                ? "justify-center"
+                : "gap-3",
             ].join(" ")}
           >
             {/* Avatar */}
@@ -259,13 +288,17 @@ export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
         --------------------------------------------------------- */}
         {!collapsed && (
           <div className="border-t border-white/10 px-5 pb-6 pt-4">
-            <p className="text-[11px] font-medium text-zinc-500">System Time</p>
+            <p className="text-[11px] font-medium text-zinc-500">
+              System Time
+            </p>
 
             <p className="mt-1 text-sm font-medium tracking-wide text-purple-400">
               10:24:35 AM
             </p>
 
-            <p className="mt-1 text-xs text-zinc-500">May 11, 2025</p>
+            <p className="mt-1 text-xs text-zinc-500">
+              May 11, 2025
+            </p>
           </div>
         )}
       </div>
