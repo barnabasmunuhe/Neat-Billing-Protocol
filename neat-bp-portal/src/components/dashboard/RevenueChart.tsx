@@ -19,8 +19,9 @@ const revenueData = [
 
 export default function RevenueChart() {
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#101218] p-6">
-      <div className="mb-6">
+    <div className="flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#101218] p-5">
+      {/* Header */}
+      <div className="mb-4 shrink-0">
         <h2 className="text-base font-semibold text-white">Revenue Overview</h2>
 
         <p className="mt-1 text-sm text-zinc-500">
@@ -28,9 +29,18 @@ export default function RevenueChart() {
         </p>
       </div>
 
-      <div className="h-72 w-full">
+      {/* Chart */}
+      <div className="min-h-0 flex-1">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={revenueData}>
+          <AreaChart
+            data={revenueData}
+            margin={{
+              top: 8,
+              right: 8,
+              left: 0,
+              bottom: 0,
+            }}
+          >
             <XAxis
               dataKey="day"
               axisLine={false}
@@ -42,6 +52,7 @@ export default function RevenueChart() {
               axisLine={false}
               tickLine={false}
               tick={{ fill: "#71717A", fontSize: 12 }}
+              width={35}
             />
 
             <Tooltip

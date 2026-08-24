@@ -6,23 +6,43 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 
-export default function Topbar() {
-  return (
-    <header className="flex h-20 items-center justify-between border-b border-white/10 bg-[#07070A] px-8">
-      {/* Left */}
-      <button
-        type="button"
-        className="rounded-lg p-2 text-zinc-400 transition hover:bg-white/5 hover:text-white"
-        aria-label="Toggle sidebar"
-      >
-        <FiMenu />
-      </button>
+interface TopbarProps {
+  onToggleSidebar: () => void;
+}
 
-      {/* Right */}
-      <div className="flex items-center gap-5">
-        {/* Search */}
-        <div className="flex h-10 w-56 items-center rounded-xl border border-white/10 bg-[#0B0D14]">
-          <FiSearch size={18} className="ml-4 shrink-0 text-zinc-500" />
+export default function Topbar({
+  onToggleSidebar,
+}: TopbarProps) {
+  return (
+    <header className="flex h-20 shrink-0 items-center justify-between border-b border-white/10 bg-[#07070A] px-6">
+      {/* =========================================================
+          LEFT SIDE
+      ========================================================= */}
+      <div className="flex items-center">
+        {/* Sidebar Toggle */}
+        <button
+          type="button"
+          onClick={onToggleSidebar}
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-zinc-400 transition hover:bg-white/5 hover:text-white"
+          aria-label="Toggle sidebar"
+          title="Toggle sidebar"
+        >
+          <FiMenu size={22} />
+        </button>
+      </div>
+
+      {/* =========================================================
+          RIGHT SIDE
+      ========================================================= */}
+      <div className="flex items-center gap-4">
+        {/* -------------------------------------------------------
+            SEARCH
+        ------------------------------------------------------- */}
+        <div className="flex h-10 w-[250px] items-center rounded-xl border border-white/10 bg-[#0B0D14]">
+          <FiSearch
+            size={18}
+            className="ml-4 shrink-0 text-zinc-500"
+          />
 
           <input
             type="text"
@@ -31,46 +51,62 @@ export default function Topbar() {
           />
         </div>
 
+        {/* -------------------------------------------------------
+            NOTIFICATIONS
+        ------------------------------------------------------- */}
         <button
           type="button"
-          className="relative rounded-lg p-2 text-zinc-300 transition hover:bg-white/5 hover:text-white"
+          className="relative flex h-10 w-10 items-center justify-center rounded-lg text-zinc-300 transition hover:bg-white/5 hover:text-white"
           aria-label="Notifications"
         >
-          <FiBell size={18} />
+          <FiBell size={19} />
 
-          <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-purple-600 px-1 text-[10px] font-semibold text-white">
+          <span className="absolute right-0 top-0 flex h-4 min-w-4 translate-x-1/4 -translate-y-1/4 items-center justify-center rounded-full bg-purple-600 px-1 text-[10px] font-semibold text-white">
             3
           </span>
         </button>
 
-        {/* Messages */}
+        {/* -------------------------------------------------------
+            MESSAGES
+        ------------------------------------------------------- */}
         <button
           type="button"
-          className="relative rounded-lg p-2 text-zinc-300 transition hover:bg-white/5 hover:text-white"
+          className="relative flex h-10 w-10 items-center justify-center rounded-lg text-zinc-300 transition hover:bg-white/5 hover:text-white"
           aria-label="Messages"
         >
-          <FiMessageSquare size={18} />
+          <FiMessageSquare size={19} />
 
-          <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-purple-600 px-1 text-[10px] font-semibold text-white">
+          <span className="absolute right-0 top-0 flex h-4 min-w-4 translate-x-1/4 -translate-y-1/4 items-center justify-center rounded-full bg-purple-600 px-1 text-[10px] font-semibold text-white">
             5
           </span>
         </button>
 
-        {/* Profile */}
+        {/* -------------------------------------------------------
+            PROFILE
+        ------------------------------------------------------- */}
         <button
           type="button"
           className="flex items-center gap-3 rounded-xl px-2 py-1.5 transition hover:bg-white/5"
+          aria-label="Open profile menu"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-600 text-sm font-semibold">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-purple-600 text-sm font-semibold text-white">
             B
           </div>
 
           <div className="hidden text-left md:block">
-            <p className="text-sm font-semibold text-white">Barney</p>
-            <p className="text-xs text-zinc-500">Administrator</p>
+            <p className="text-sm font-semibold leading-tight text-white">
+              Barney
+            </p>
+
+            <p className="mt-1 text-xs leading-tight text-zinc-500">
+              Administrator
+            </p>
           </div>
 
-          <FiChevronDown />
+          <FiChevronDown
+            size={16}
+            className="text-zinc-400"
+          />
         </button>
       </div>
     </header>

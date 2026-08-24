@@ -2,8 +2,8 @@ import { Outlet } from "react-router-dom";
 
 export default function PageContainer() {
   return (
-    <main className="flex-1 overflow-y-auto p-6">
+    <div className="h-full min-h-0 overflow-hidden p-6">
       <Outlet />
-    </main>
+    </div>
   );
 }
