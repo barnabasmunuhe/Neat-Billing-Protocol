@@ -1,5 +1,5 @@
 import {
-  LayoutDashboard,
+  House,
   Users,
   Router,
   Wifi,
@@ -16,7 +16,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import neatLogo from "../../assets/neat-logo.png";
 
 interface SidebarProps {
@@ -28,7 +28,7 @@ const menu = [
   {
     name: "Dashboard",
     path: "/",
-    icon: LayoutDashboard,
+    icon: House,
   },
   {
     name: "Routers",
@@ -99,8 +99,10 @@ const menu = [
 
 export default function Sidebar({
   collapsed,
-  onToggle: _onToggle,
+  onToggle,
 }: SidebarProps) {
+  const location = useLocation();
+
   return (
     <aside
       className={[
@@ -128,24 +130,8 @@ export default function Sidebar({
             collapsed ? "justify-center" : "",
           ].join(" ")}
         >
-          {/* -----------------------------------------------------
-              NEAT LOGO
-              
-              The PNG is now:
-              - transparent
-              - tightly cropped
-              - clean
-              - glow preserved
-              - optimized for small display
-              
-              Therefore we render it at its actual display size.
-          ----------------------------------------------------- */}
-          <div
-            className={[
-              "flex shrink-0 items-center justify-center",
-              collapsed ? "h-[44px] w-[44px]" : "h-[44px] w-[44px]",
-            ].join(" ")}
-          >
+          {/* N LOGO */}
+          <div className="flex h-[44px] w-[44px] shrink-0 items-center justify-center">
             <img
               src={neatLogo}
               alt="Neat"
@@ -154,9 +140,7 @@ export default function Sidebar({
             />
           </div>
 
-          {/* -----------------------------------------------------
-              BRAND TEXT
-          ----------------------------------------------------- */}
+          {/* BRAND TEXT */}
           {!collapsed && (
             <div className="ml-2 min-w-0">
               <p className="text-[23px] font-semibold leading-none tracking-tight text-white">
@@ -185,6 +169,21 @@ export default function Sidebar({
                 to={item.path}
                 end={item.path === "/"}
                 title={collapsed ? item.name : undefined}
+                onClick={(event) => {
+                  /*
+                   * Clicking the currently active page:
+                   *
+                   * Expanded  -> collapse sidebar
+                   * Collapsed  -> expand sidebar
+                   *
+                   * Clicking another page continues to navigate
+                   * normally.
+                   */
+                  if (location.pathname === item.path) {
+                    event.preventDefault();
+                    onToggle();
+                  }
+                }}
                 className={({ isActive }) =>
                   [
                     "group flex h-10 items-center rounded-lg",
@@ -232,15 +231,10 @@ export default function Sidebar({
           BOTTOM AREA
       ========================================================= */}
       <div className="shrink-0">
-
-        {/* ---------------------------------------------------------
-            USER PROFILE DIVIDER
-        --------------------------------------------------------- */}
+        {/* PROFILE DIVIDER */}
         <div className="mx-4 border-t border-white/10" />
 
-        {/* ---------------------------------------------------------
-            USER PROFILE
-        --------------------------------------------------------- */}
+        {/* USER PROFILE */}
         <div
           className={[
             "py-4",
@@ -255,12 +249,12 @@ export default function Sidebar({
                 : "gap-3",
             ].join(" ")}
           >
-            {/* Avatar */}
+            {/* AVATAR */}
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-purple-600 text-sm font-semibold text-white shadow-[0_0_18px_rgba(139,92,246,0.15)]">
               B
             </div>
 
-            {/* User Information */}
+            {/* USER INFORMATION */}
             {!collapsed && (
               <>
                 <div className="min-w-0 flex-1">
@@ -283,9 +277,7 @@ export default function Sidebar({
           </div>
         </div>
 
-        {/* ---------------------------------------------------------
-            SYSTEM TIME
-        --------------------------------------------------------- */}
+        {/* SYSTEM TIME */}
         {!collapsed && (
           <div className="border-t border-white/10 px-5 pb-6 pt-4">
             <p className="text-[11px] font-medium text-zinc-500">
@@ -297,7 +289,7 @@ export default function Sidebar({
             </p>
 
             <p className="mt-1 text-xs text-zinc-500">
-              May 11, 2025
+              August 08, 2026
             </p>
           </div>
         )}

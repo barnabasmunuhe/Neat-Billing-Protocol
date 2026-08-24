@@ -4,12 +4,11 @@ import Sidebar from "../components/layout/Sidebar";
 import Topbar from "../components/layout/Topbar";
 import PageContainer from "../components/layout/PageContainer";
 
-// This is the parent that owns the relationship between the sidebar, topbar, and page content. It manages the state of the sidebar (collapsed or expanded) and passes down the necessary props to the child components.
 export default function DashboardLayout() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const toggleSidebar = () => {
-    setSidebarCollapsed((current) => !current);
+    setSidebarCollapsed((prev) => !prev);
   };
 
   return (
@@ -17,16 +16,22 @@ export default function DashboardLayout() {
       {/* =========================================================
           SIDEBAR
       ========================================================= */}
-      <Sidebar collapsed={sidebarCollapsed} onToggle={toggleSidebar} />
+      <Sidebar
+        collapsed={sidebarCollapsed}
+        onToggle={toggleSidebar}
+      />
 
       {/* =========================================================
           MAIN APPLICATION AREA
       ========================================================= */}
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+
         {/* ---------------------------------------------------------
             TOPBAR
         --------------------------------------------------------- */}
-        <Topbar onToggleSidebar={toggleSidebar} />
+        <div className="shrink-0">
+          <Topbar onToggleSidebar={toggleSidebar} />
+        </div>
 
         {/* ---------------------------------------------------------
             PAGE CONTENT
@@ -34,6 +39,7 @@ export default function DashboardLayout() {
         <main className="min-h-0 flex-1 overflow-hidden">
           <PageContainer />
         </main>
+
       </div>
     </div>
   );
