@@ -12,7 +12,15 @@ interface StatsCardProps {
   chart?: ReactNode;
 }
 
-export default function StatsCard({ title, value, trend, trendLabel, icon, progress, chart }: StatsCardProps) {
+export default function StatsCard({
+  title,
+  value,
+  trend,
+  trendLabel,
+  icon,
+  progress,
+  chart,
+}: StatsCardProps) {
   const getTrendColor = () => {
     if (trend > 0) return "text-emerald-400";
     if (trend < 0) return "text-red-400";
@@ -27,15 +35,25 @@ export default function StatsCard({ title, value, trend, trendLabel, icon, progr
             {icon}
           </div>
           <div>
-            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">{title}</p>
+            <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">
+              {title}
+            </p>
             <h2 className="mt-1 text-2xl font-bold text-white">{value}</h2>
           </div>
         </div>
       </div>
 
       <div className="mt-4 flex items-center gap-1.5 text-xs">
-        <span className={`flex items-center gap-0.5 font-medium ${getTrendColor()}`}>
-          {trend > 0 ? <ArrowUpRight size={14} /> : trend < 0 ? <ArrowDownRight size={14} /> : <Minus size={14} />}
+        <span
+          className={`flex items-center gap-0.5 font-medium ${getTrendColor()}`}
+        >
+          {trend > 0 ? (
+            <ArrowUpRight size={14} />
+          ) : trend < 0 ? (
+            <ArrowDownRight size={14} />
+          ) : (
+            <Minus size={14} />
+          )}
           {Math.abs(trend)}%
         </span>
         <span className="text-zinc-500">{trendLabel}</span>
@@ -46,7 +64,10 @@ export default function StatsCard({ title, value, trend, trendLabel, icon, progr
 
       {progress !== undefined && (
         <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white/[0.05]">
-          <div className="h-full rounded-full bg-purple-500" style={{ width: `${progress}%` }} />
+          <div
+            className="h-full rounded-full bg-purple-500"
+            style={{ width: `${progress}%` }}
+          />
         </div>
       )}
     </div>

@@ -13,11 +13,46 @@ interface Node {
 
 // Expanded coordinates to match target map layout
 const nodes: Node[] = [
-  { id: "1", name: "Wakulima-AP-01", status: "healthy", details: "Clients: 24\nUptime: 26.6h", x: 15, y: 25 },
-  { id: "2", name: "City Market AP-03", status: "healthy", details: "Clients: 15\nUptime: 54.2h", x: 82, y: 20 },
-  { id: "3", name: "Core Router", status: "healthy", details: "Uptime: 15d 4h", x: 48, y: 50 },
-  { id: "4", name: "Gikomba-AP-02", status: "warning", details: "Clients: 32\nUptime: 1h 3h", x: 18, y: 72 },
-  { id: "5", name: "Toi Market AP-05", status: "down", details: "Clients: 21\nUptime: 45.1h", x: 80, y: 75 },
+  {
+    id: "1",
+    name: "Wakulima-AP-01",
+    status: "healthy",
+    details: "Clients: 24\nUptime: 26.6h",
+    x: 15,
+    y: 25,
+  },
+  {
+    id: "2",
+    name: "City Market AP-03",
+    status: "healthy",
+    details: "Clients: 15\nUptime: 54.2h",
+    x: 82,
+    y: 20,
+  },
+  {
+    id: "3",
+    name: "Core Router",
+    status: "healthy",
+    details: "Uptime: 15d 4h",
+    x: 48,
+    y: 50,
+  },
+  {
+    id: "4",
+    name: "Gikomba-AP-02",
+    status: "warning",
+    details: "Clients: 32\nUptime: 1h 3h",
+    x: 18,
+    y: 72,
+  },
+  {
+    id: "5",
+    name: "Toi Market AP-05",
+    status: "down",
+    details: "Clients: 21\nUptime: 45.1h",
+    x: 80,
+    y: 75,
+  },
 ];
 
 const statusColors = {
@@ -42,11 +77,47 @@ export default function NetworkMap() {
       {/* Map Area - flex-1 so it expands */}
       <div className="relative min-h-0 flex-1 overflow-hidden rounded-xl border border-white/[0.06] bg-[#060609]">
         {/* SVG Lines */}
-        <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-          <line x1="48" y1="50" x2="15" y2="25" stroke="#3f3f46" strokeWidth="0.3" strokeDasharray="2 2" />
-          <line x1="48" y1="50" x2="82" y2="20" stroke="#3f3f46" strokeWidth="0.3" strokeDasharray="2 2" />
-          <line x1="48" y1="50" x2="18" y2="72" stroke="#3f3f46" strokeWidth="0.3" strokeDasharray="2 2" />
-          <line x1="48" y1="50" x2="80" y2="75" stroke="#3f3f46" strokeWidth="0.3" strokeDasharray="2 2" />
+        <svg
+          className="absolute inset-0 h-full w-full"
+          preserveAspectRatio="none"
+          viewBox="0 0 100 100"
+        >
+          <line
+            x1="48"
+            y1="50"
+            x2="15"
+            y2="25"
+            stroke="#3f3f46"
+            strokeWidth="0.3"
+            strokeDasharray="2 2"
+          />
+          <line
+            x1="48"
+            y1="50"
+            x2="82"
+            y2="20"
+            stroke="#3f3f46"
+            strokeWidth="0.3"
+            strokeDasharray="2 2"
+          />
+          <line
+            x1="48"
+            y1="50"
+            x2="18"
+            y2="72"
+            stroke="#3f3f46"
+            strokeWidth="0.3"
+            strokeDasharray="2 2"
+          />
+          <line
+            x1="48"
+            y1="50"
+            x2="80"
+            y2="75"
+            stroke="#3f3f46"
+            strokeWidth="0.3"
+            strokeDasharray="2 2"
+          />
         </svg>
 
         {/* Nodes */}
@@ -72,12 +143,20 @@ export default function NetworkMap() {
                 )}
               </div>
               <div className="mt-1.5 rounded-md bg-[#09090b]/80 px-2 py-1 backdrop-blur-sm">
-                <p className="text-[10px] font-semibold text-white whitespace-nowrap">{node.name}</p>
+                <p className="text-[10px] font-semibold text-white whitespace-nowrap">
+                  {node.name}
+                </p>
               </div>
               <div className="mt-1 flex items-center gap-1.5">
-                <span className={`h-1.5 w-1.5 rounded-full ${statusColors[node.status]}`} />
+                <span
+                  className={`h-1.5 w-1.5 rounded-full ${statusColors[node.status]}`}
+                />
                 <span className="text-[9px] text-zinc-500">
-                  {node.status === "healthy" ? "Healthy" : node.status === "warning" ? "Warning" : "Down"}
+                  {node.status === "healthy"
+                    ? "Healthy"
+                    : node.status === "warning"
+                      ? "Warning"
+                      : "Down"}
                 </span>
               </div>
             </div>
@@ -88,8 +167,12 @@ export default function NetworkMap() {
         {selectedNode && (
           <div className="absolute bottom-4 left-1/2 z-20 w-[200px] -translate-x-1/2 rounded-xl border border-white/10 bg-[#101218]/95 p-4 shadow-xl backdrop-blur-md">
             <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
-              <p className="text-xs font-semibold text-white">{selectedNode.name}</p>
-              <span className={`h-2 w-2 rounded-full ${statusColors[selectedNode.status]}`} />
+              <p className="text-xs font-semibold text-white">
+                {selectedNode.name}
+              </p>
+              <span
+                className={`h-2 w-2 rounded-full ${statusColors[selectedNode.status]}`}
+              />
             </div>
             <div className="space-y-1">
               {selectedNode.details.split("\n").map((line, idx) => {

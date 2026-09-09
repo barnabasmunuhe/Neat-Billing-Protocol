@@ -14,7 +14,7 @@ import Reports from "../pages/Reports";
 import Logs from "../pages/Logs";
 import Settings from "../pages/Settings";
 // AI Assistant Placeholders
-import AiAssistant from "../pages/AiAssistant"; 
+import AiAssistant from "../pages/AiAssistant";
 
 export default function AppRoutes() {
   return (

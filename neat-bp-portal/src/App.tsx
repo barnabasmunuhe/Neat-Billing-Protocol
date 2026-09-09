@@ -21,7 +21,7 @@ function App() {
       {/* The layout wraps all the pages */}
       <Route element={<DashboardLayout />}>
         <Route path="/" element={<Dashboard />} />
-        
+
         {/* Other routes */}
         <Route path="/customers" element={<Customers />} />
         <Route path="/hotspot" element={<Hotspot />} />

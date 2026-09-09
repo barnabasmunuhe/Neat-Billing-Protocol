@@ -61,7 +61,12 @@ const groups: NavGroup[] = [
     items: [
       { name: "Overview", path: "/network", icon: LayoutDashboard },
       { name: "Routers", path: "/routers", icon: Router },
-      { name: "Access Points", path: "/access-points", icon: Radio, badge: "New" },
+      {
+        name: "Access Points",
+        path: "/access-points",
+        icon: Radio,
+        badge: "New",
+      },
       { name: "Network Map", path: "/network-map", icon: Map },
       { name: "Outages", path: "/outages", icon: TriangleAlert },
     ],
@@ -125,10 +130,7 @@ const groups: NavGroup[] = [
   },
 ];
 
-export default function Sidebar({
-  collapsed,
-  onToggle,
-}: SidebarProps) {
+export default function Sidebar({ collapsed, onToggle }: SidebarProps) {
   const [hoveredGroup, setHoveredGroup] = useState<string | null>(null);
 
   const handlePageClick = () => {
@@ -328,8 +330,14 @@ export default function Sidebar({
                               ].join(" ")
                             }
                           >
-                            <ItemIcon size={16} strokeWidth={1.8} className="shrink-0" />
-                            <span className="min-w-0 flex-1 truncate">{item.name}</span>
+                            <ItemIcon
+                              size={16}
+                              strokeWidth={1.8}
+                              className="shrink-0"
+                            />
+                            <span className="min-w-0 flex-1 truncate">
+                              {item.name}
+                            </span>
 
                             {item.badge && (
                               <span className="rounded-md bg-purple-600 px-1.5 py-0.5 text-[9px] font-semibold text-white">
