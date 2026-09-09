@@ -23,7 +23,6 @@ export default function RevenueChart() {
       {/* Header */}
       <div className="mb-4 shrink-0">
         <h2 className="text-base font-semibold text-white">Revenue Overview</h2>
-
         <p className="mt-1 text-sm text-zinc-500">
           Revenue generated over the last 7 days
         </p>
@@ -34,27 +33,10 @@ export default function RevenueChart() {
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={revenueData}
-            margin={{
-              top: 8,
-              right: 8,
-              left: 0,
-              bottom: 0,
-            }}
+            margin={{ top: 8, right: 8, left: 0, bottom: 0 }}
           >
-            <XAxis
-              dataKey="day"
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: "#71717A", fontSize: 12 }}
-            />
-
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              tick={{ fill: "#71717A", fontSize: 12 }}
-              width={35}
-            />
-
+            <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: "#71717A", fontSize: 12 }} />
+            <YAxis axisLine={false} tickLine={false} tick={{ fill: "#71717A", fontSize: 12 }} width={35} />
             <Tooltip
               contentStyle={{
                 backgroundColor: "#101218",
@@ -63,15 +45,7 @@ export default function RevenueChart() {
                 color: "#fff",
               }}
             />
-
-            <Area
-              type="monotone"
-              dataKey="revenue"
-              stroke="#8B5CF6"
-              fill="#8B5CF6"
-              fillOpacity={0.12}
-              strokeWidth={2}
-            />
+            <Area type="monotone" dataKey="revenue" stroke="#8B5CF6" fill="#8B5CF6" fillOpacity={0.12} strokeWidth={2} />
           </AreaChart>
         </ResponsiveContainer>
       </div>

@@ -164,3 +164,18 @@ select {
     @apply font-sans;
   }
 }
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent the whole page from scrolling */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}

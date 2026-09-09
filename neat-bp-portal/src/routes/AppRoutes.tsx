@@ -13,12 +13,14 @@ import Payments from "../pages/Payments";
 import Reports from "../pages/Reports";
 import Logs from "../pages/Logs";
 import Settings from "../pages/Settings";
+// AI Assistant Placeholders
+import AiAssistant from "../pages/AiAssistant"; 
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<DashboardLayout />}>
-        <Route index element={<Dashboard />} />
+        <Route index element={<Dashboard />} /> {/* Home Dashboard */}
         <Route path="customers" element={<Customers />} />
         <Route path="routers" element={<Routers />} />
         <Route path="hotspot" element={<Hotspot />} />
@@ -29,6 +31,8 @@ export default function AppRoutes() {
         <Route path="reports" element={<Reports />} />
         <Route path="logs" element={<Logs />} />
         <Route path="settings" element={<Settings />} />
+        {/* Added AI Assistant routes */}
+        <Route path="ai-assistant" element={<AiAssistant />} />
       </Route>
     </Routes>
   );
